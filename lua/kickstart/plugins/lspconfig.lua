@@ -139,13 +139,15 @@ return {
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format lua code
         'eslint',
-        'tsserver',
         'vue-language-server',
+        'prettier',
+        'pylint', -- python linter
+        'eslint_d', -- js linter
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       -- If you are using mason.nvim, you can get the ts_plugin_path like this
-      local mason_registry = require('mason-registry')
+      local mason_registry = require 'mason-registry'
       local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() .. '/node_modules/@vue/language-server'
 
       -- Enable the following language servers
@@ -197,7 +199,23 @@ return {
           },
           filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
         },
-        volar = {}
+
+        html = {},
+        cssls = {},
+        -- tailwindcss = {},
+        volar = {},
+        svelte = {
+          capabilities = capabilities,
+          on_attach = function(client, bufnr)
+            vim.api.nvim_create_autocmd('BufWritePost', {
+              pattern = { '*.js', '*.ts' },
+              callback = function(ctx)
+                -- Here use ctx.match instead of ctx.file
+                client.notify('$/onDidChangeTsOrJsFile', { uri = ctx.match })
+              end,
+            })
+          end,
+        },
       }
 
       require('mason-lspconfig').setup {

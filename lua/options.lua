@@ -53,7 +53,6 @@ vim.opt.scrolloff = 8
 -- Keep signcolumn on by default
 vim.opt.signcolumn = 'yes'
 
-
 vim.opt.isfname:append '@-@'
 
 vim.opt.colorcolumn = '80'
@@ -83,5 +82,8 @@ vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
+
+-- Netrw Tree style
+vim.cmd 'let g:netrw_liststyle = 3'
 
 -- vim: ts=2 sts=2 sw=2 et
