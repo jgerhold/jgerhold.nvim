@@ -5,6 +5,7 @@ return {
     'kristijanhusak/vim-dadbod-ui',
     'kristijanhusak/vim-dadbod-completion',
   },
+  cmd = { 'DBUI', 'DB' },
   config = function()
     local function db_completion()
       require('cmp').setup.buffer { sources = { { name = 'vim-dadbod-completion' } } }

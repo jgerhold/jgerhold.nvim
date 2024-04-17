@@ -29,6 +29,17 @@ return {
     local dapui = require 'dapui'
 
     require('mason-nvim-dap').setup {
+
+      -- NOTE: this is left here for future porting in case needed
+      -- Whether adapters that are set up (via dap) should be automatically installed if they're not already installed.
+      -- This setting has no relation with the `ensure_installed` setting.
+      -- Can either be:
+      --   - false: Daps are not automatically installed.
+      --   - true: All adapters set up via dap are automatically installed.
+      --   - { exclude: string[] }: All adapters set up via mason-nvim-dap, except the ones provided in the list, are automatically installed.
+      --       Example: automatic_installation = { exclude = { "python", "delve" } }
+      automatic_installation = true,
+
       -- Makes a best effort to setup the various debuggers with
       -- reasonable debug configurations
       automatic_setup = true,
@@ -42,6 +53,7 @@ return {
       ensure_installed = {
         -- Update this to ensure that you have the debuggers for the langs you want
         'delve',
+        'php',
       },
     }
 
