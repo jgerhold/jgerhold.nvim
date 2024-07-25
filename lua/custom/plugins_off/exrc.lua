@@ -6,6 +6,7 @@ return {
 
     require('exrc').setup {
       files = {
+        '.nvim.lua',
         '.nvimrc.lua',
         '.nvimrc',
         '.exrc.lua',

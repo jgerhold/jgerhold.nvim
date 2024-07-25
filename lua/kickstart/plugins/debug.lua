@@ -46,7 +46,32 @@ return {
 
       -- You can provide additional configuration to the handlers,
       -- see mason-nvim-dap README for more information
-      handlers = {},
+      handlers = {
+        function(config)
+          -- all sources with no handler get passed here
+
+          -- Keep original functionality
+          require('mason-nvim-dap').default_setup(config)
+        end,
+        php = function(config)
+          config.configurations = {
+            {
+              name = 'Listen for XDebug',
+              type = 'php',
+              request = 'launch',
+              port = 9003,
+              -- log = true,
+              pathMappings = {
+                ['/app'] = vim.fn.getcwd() .. '/',
+                ['/packages'] = vim.fn.getcwd() .. '/../packages',
+              },
+              hostname = '0.0.0.0',
+            },
+          }
+
+          require('mason-nvim-dap').default_setup(config) -- don't forget this!
+        end,
+      },
 
       -- You'll need to check that you have the required things installed
       -- online, please don't ask me how to install them :)

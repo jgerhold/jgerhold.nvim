@@ -87,7 +87,7 @@ vim.opt.scrolloff = 10
 -- vim.cmd 'let g:netrw_liststyle = 3'
 
 -- Enable exrc
-vim.opt.exrc = true
-vim.opt.secure = true
+-- vim.opt.exrc = true
+-- vim.opt.secure = true
 
 -- vim: ts=2 sts=2 sw=2 et
