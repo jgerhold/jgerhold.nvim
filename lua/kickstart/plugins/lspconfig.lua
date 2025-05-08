@@ -350,8 +350,7 @@ return {
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       -- If you are using mason.nvim, you can get the ts_plugin_path like this
-      local mason_registry = require 'mason-registry'
-      local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() .. '/node_modules/@vue/language-server'
+      local vue_language_server_path = vim.fn.exepath("vue-language-server")
 
       require('mason-lspconfig').setup {
         ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
