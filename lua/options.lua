@@ -56,7 +56,7 @@ vim.o.scrolloff = 8
 -- Keep signcolumn on by default
 vim.o.signcolumn = 'yes'
 
-vim.o.isfname:append '@-@'
+vim.opt.isfname:append '@-@'
 
 vim.o.colorcolumn = '80'
 
@@ -79,7 +79,7 @@ vim.o.splitbelow = true
 --   See `:help lua-options`
 --   and `:help lua-options-guide`
 vim.o.list = true
-vim.o.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
 vim.o.inccommand = 'split'

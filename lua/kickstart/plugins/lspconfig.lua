@@ -19,6 +19,7 @@ return {
       -- Automatically install LSPs and related tools to stdpath for Neovim
       -- Mason must be loaded before its dependents so we need to set it up here.
       -- NOTE: `opts = {}` is the same as calling `require('mason').setup({})`
+      { "folke/neoconf.nvim" },
       { 'mason-org/mason.nvim', opts = {} },
       'mason-org/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
@@ -251,7 +252,7 @@ return {
         html = {},
         cssls = {},
         -- tailwindcss = {},
-        volar = {},
+        -- volar = {},
         svelte = {
           capabilities = capabilities,
           on_attach = function(client, bufnr)
@@ -351,6 +352,10 @@ return {
 
       -- If you are using mason.nvim, you can get the ts_plugin_path like this
       local vue_language_server_path = vim.fn.exepath 'vue-language-server'
+
+      require("neoconf").setup({
+        -- override any of the default settings here
+      })
 
       require('mason-lspconfig').setup {
         ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
